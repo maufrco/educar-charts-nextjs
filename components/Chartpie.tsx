@@ -61,14 +61,14 @@ const Chartpie: FunctionComponent<School> =  ({
         title: {
             text: situacao,
             style: {
-              fontSize: 45,
+              fontSize: 35,
               fontFamily: '\'Roboto\', sans-serif',
           }
         },
         subtitle: {
-          text: `Total ${totalGeralFeminino+totalGeralMasculino}`,
+          text: `(total: ${totalGeralFeminino+totalGeralMasculino})`,
           style: {
-            fontSize: 45,
+            fontSize: 30,
             fontFamily: '\'Roboto\', sans-serif',
         }
       },
@@ -80,10 +80,10 @@ const Chartpie: FunctionComponent<School> =  ({
             depth: 35,
             dataLabels: {
                 style: {
-                    fontSize: 45,
+                    fontSize: 40,
                     fontFamily: '\'Roboto\', sans-serif',
                 },
-              format: '<b>{point.name}</b><br>{point.y:.f}',
+              format: '{point.name}<br>{point.y:.f}',
             },
           },
         },

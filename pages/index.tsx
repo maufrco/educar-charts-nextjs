@@ -61,7 +61,7 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
             <Footer>
               <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar" />    
             </Footer>
-            <GeneroIcon fill-opacity="0.2" style={{position:'absolute', top: 5, right:5, width:'350px'}} />
+            <GeneroIcon fill-opacity="0.1" style={{position:'absolute', top: 5, right:5, width:'450px'}} />
           </Box>
           <Box>Chart 2</Box>
         </Carousel>
