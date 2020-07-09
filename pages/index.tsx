@@ -1,3 +1,4 @@
+
 import { FunctionComponent } from "react";
 import Carousel from "react-multi-carousel";
 import Chartpie, { School } from "../components/Chartpie";
@@ -65,7 +66,7 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
           <Box>Chart 2</Box>
         </Carousel>
 
-      
+
     );
   }
 export const getStaticProps: GetStaticProps = async () => {

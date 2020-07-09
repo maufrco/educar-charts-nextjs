@@ -1,6 +1,7 @@
 import React, { useRef, FunctionComponent } from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import highcharts3d from 'highcharts/highcharts-3d';
 
 export interface School {
   anoLetivo: number
@@ -24,7 +25,7 @@ const Chartpie: FunctionComponent<School> =  ({
   totalGeralMasculino,
   totalMatriculasEnsino
 }) => {
-
+  highcharts3d(Highcharts);
 // console.log(  anoLetivo,
 //   matriculasEscolaDto,
 //   matriculasEscolaPorEnsinoDto,
@@ -46,7 +47,12 @@ const Chartpie: FunctionComponent<School> =  ({
           spacingTop: 0,
           spacingBottom: 0,
           spacingLeft: 0,
-          spacingRight: 0   
+          spacingRight: 0,
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
         },
         credits: {
             enabled: false
@@ -71,6 +77,7 @@ const Chartpie: FunctionComponent<School> =  ({
           pie: {
             showInLegend: true,
             enabled: true,
+            depth: 35,
             dataLabels: {
                 style: {
                     fontSize: 45,
