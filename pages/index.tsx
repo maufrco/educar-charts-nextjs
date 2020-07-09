@@ -4,12 +4,13 @@ import Chartpie, { School } from "../components/Chartpie";
 import { GetStaticProps } from "next";
 import { getJson } from "../service/api";
 import styled from "styled-components";
+import {GeneroIcon} from "../src/icons/Icons";
+import { Box } from '@material-ui/core';
+
+
 
 const Header = styled.div`
   background: rgb(255, 255, 255)
-`
-
-const Title = styled.div`
   text-align: center;
   font-size:28pt;
 `
@@ -17,7 +18,6 @@ const Title = styled.div`
 const Footer = styled.div`
   padding: 0.8rem;
   height: 120spx;
-            background-image: linear-gradient(to right, rgb(255, 255, 255), DodgerBlue);
 `
 const responsive = {
   desktop: {
@@ -38,8 +38,9 @@ type Props = {
   school: School;
 };
 const Index: FunctionComponent<Props> = ({ school }) =>{
+
     return (
-      
+
         <Carousel
           responsive={responsive}
           ssr
@@ -53,19 +54,17 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
           deviceType={""}
           removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
         >
-          <>
-            <Header>
-              <Title>  {school.situacao}</Title>
-              <img src="http://3.236.124.244/caj/static/images/logoCajamar.png" alt="Logo Cajamar" width="130" />
-            </Header>
+          <Box>
+            <img src="http://3.236.124.244/caj/static/images/logoCajamar.png" alt="Logo Cajamar" width="130" />
             <Chartpie {...school}></Chartpie>
             <Footer>
-              <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar" />  
+              <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar" />    
             </Footer>
-          </>
-          <div>Chart 2</div>
-          <div>Chart 3</div>
+            <GeneroIcon fill-opacity="0.2" style={{position:'absolute', top: 5, right:5, width:'350px'}} />
+          </Box>
+          <Box>Chart 2</Box>
         </Carousel>
+
       
     );
   }

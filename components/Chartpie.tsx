@@ -25,16 +25,15 @@ const Chartpie: FunctionComponent<School> =  ({
   totalMatriculasEnsino
 }) => {
 
-
-console.log(  anoLetivo,
-  matriculasEscolaDto,
-  matriculasEscolaPorEnsinoDto,
-  matriculasEscolaPorSexoDto,
-  situacao,
-  totalGeral,
-  totalGeralFeminino,
-  totalGeralMasculino,
-  totalMatriculasEnsino)
+// console.log(  anoLetivo,
+//   matriculasEscolaDto,
+//   matriculasEscolaPorEnsinoDto,
+//   matriculasEscolaPorSexoDto,
+//   situacao,
+//   totalGeral,
+//   totalGeralFeminino,
+//   totalGeralMasculino,
+//   totalMatriculasEnsino)
 
 
     const chartRef: any = useRef()
@@ -44,7 +43,6 @@ console.log(  anoLetivo,
           plotBorderWidth: null,
           plotShadow: false,
           type: "pie",
-          margin: [0, 0, 0, 0],
           spacingTop: 0,
           spacingBottom: 0,
           spacingLeft: 0,
@@ -55,20 +53,28 @@ console.log(  anoLetivo,
         },
         tooltip: { enabled: false },
         title: {
-            text: `Total ${totalGeralFeminino+totalGeralMasculino}`
+            text: situacao,
+            style: {
+              fontSize: 45,
+              fontFamily: '\'Roboto\', sans-serif',
+          }
         },
+        subtitle: {
+          text: `Total ${totalGeralFeminino+totalGeralMasculino}`,
+          style: {
+            fontSize: 45,
+            fontFamily: '\'Roboto\', sans-serif',
+        }
+      },
         plotOptions: {
-          series: {
-            enableMouseTracking: false
-        },
+          series: {enableMouseTracking: false},
           pie: {
-            size:'90%',
-            height: '90%',
+            showInLegend: true,
+            enabled: true,
             dataLabels: {
                 style: {
                     fontSize: 45,
                     fontFamily: '\'Roboto\', sans-serif',
-                    fontWeight: 10,
                 },
               format: '<b>{point.name}</b><br>{point.y:.f}',
             },
@@ -77,12 +83,11 @@ console.log(  anoLetivo,
         series: [
           {
             name: "",
-            showInLegend: false,
             colorByPoint: true,
             borderColor: null,
             slicedOffset: 4,
             data: [
-                { name: 'MENINOS', y: totalGeralMasculino, color: '#7095E1', sliced: true },
+                { name: 'MENINOS', y: totalGeralMasculino, color: '#7095E1'},
                 { name: 'MENINAS', y: totalGeralFeminino, color: '#FF8800'},
             ],
           },

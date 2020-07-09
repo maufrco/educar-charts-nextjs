@@ -26,10 +26,7 @@ class MyApp extends App {
           registry={this.pageContext.sheetsRegistry}
           generateClassName={this.pageContext.generateClassName}
         >
-          <MuiThemeProvider
-            theme={this.pageContext.theme}
-            sheetsManager={this.pageContext.sheetsManager}
-          >
+          <MuiThemeProvider theme={this.pageContext.theme}>
             <CssBaseline />
             <Component pageContext={this.pageContext} {...pageProps} />
           </MuiThemeProvider>
