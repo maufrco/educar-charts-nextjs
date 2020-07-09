@@ -5,15 +5,19 @@ import { GetStaticProps } from "next";
 import { getJson } from "../service/api";
 import styled from "styled-components";
 
-const Title = styled.h1`
-  padding: 0.8rem;
+const Header = styled.div`
+  background: rgb(255, 255, 255)
+`
+
+const Title = styled.div`
   text-align: center;
   font-size:28pt;
 `
+
 const Footer = styled.div`
   padding: 0.8rem;
-  height: 135px;
-            background-image: linear-gradient(to right, rgb(200, 220, 240), DodgerBlue);
+  height: 120spx;
+            background-image: linear-gradient(to right, rgb(255, 255, 255), DodgerBlue);
 `
 const responsive = {
   desktop: {
@@ -50,16 +54,17 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
           removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
         >
           <>
-            <Title>{school.situacao}</Title>
+            <Header>
+              <Title>  {school.situacao}</Title>
+              <img src="http://3.236.124.244/caj/static/images/logoCajamar.png" alt="Logo Cajamar" width="130" />
+            </Header>
             <Chartpie {...school}></Chartpie>
             <Footer>
-              <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar" />
-              <img src="https://uploaddeimagens.com.br/images/002/746/830/full/BRASAO-MUNICIPAL-removebg.png?1593797452" alt="Logo Jaboticabal" width="150" height="135" />
+              <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar" />  
             </Footer>
           </>
           <div>Chart 2</div>
           <div>Chart 3</div>
-          <div>Chart 4</div>
         </Carousel>
       
     );
