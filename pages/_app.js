@@ -9,8 +9,8 @@ import JssProvider from "react-jss/lib/JssProvider";
 import getPageContext from "../src/getPageContext";
 
 // Add global styles
-import "../style.css";
 import "react-multi-carousel/lib/styles.css";
+import "../style.css";
 
 class MyApp extends App {
   constructor() {
