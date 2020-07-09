@@ -11,14 +11,17 @@ import { Box } from '@material-ui/core';
 
 
 const Header = styled.div`
-  background: rgb(255, 255, 255)
-  text-align: center;
   font-size:28pt;
+  margin: 0.4em 0 0.8em 0  ;
+  padding: 0 0.8em ;
+  border-bottom: 2px solid #CCC;
+  color: #666;
 `
 
 const Footer = styled.div`
   padding: 0.8rem;
-  height: 120spx;
+  height: 150px;
+
 `
 const responsive = {
   desktop: {
@@ -56,12 +59,17 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
           removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
         >
           <Box>
-            <img src="http://3.236.124.244/caj/static/images/logoCajamar.png" alt="Logo Cajamar" width="130" />
+            <Header>
+            <b>Gráficos de alunos </b>{school.situacao}
+            </Header>
+           
             <Chartpie {...school}></Chartpie>
             <Footer>
-              <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar" />    
+            
+              <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar"  width="120" />    
+              <img src="http://3.236.124.244/caj/static/images/logoCajamar.png" alt="Logo Cajamar" width="150" />
             </Footer>
-            <GeneroIcon fill-opacity="0.1" style={{position:'absolute', top: 5, right:5, width:'450px'}} />
+            <GeneroIcon fill-opacity="0.1" style={{position:'absolute', top: 200, right:5, width:'450px'}} />
           </Box>
           <Box>Chart 2</Box>
         </Carousel>

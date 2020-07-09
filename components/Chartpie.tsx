@@ -59,14 +59,7 @@ const Chartpie: FunctionComponent<School> =  ({
         },
         tooltip: { enabled: false },
         title: {
-            text: situacao,
-            style: {
-              fontSize: 35,
-              fontFamily: '\'Roboto\', sans-serif',
-          }
-        },
-        subtitle: {
-          text: `(total: ${totalGeralFeminino+totalGeralMasculino})`,
+          text: `Total de alunos: ${totalGeralFeminino+totalGeralMasculino}`,
           style: {
             fontSize: 30,
             fontFamily: '\'Roboto\', sans-serif',
