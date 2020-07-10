@@ -5,7 +5,7 @@ import Chartpie, { School } from "../components/Chartpie";
 import { GetStaticProps } from "next";
 import { getJson } from "../service/api";
 import styled from "styled-components";
-import {GeneroIcon} from "../src/icons/Icons";
+import {GeneroIcon, CajamarIcon} from "../src/icons/Icons";
 import { Box } from '@material-ui/core';
 
 
@@ -77,7 +77,7 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
               <Header>
                 <FlexContainer>
                   <Logo>
-                      <Cajamar src="https://cajamar.sp.gov.br/wp-content/uploads/2020/01/cropped-sem_titulo-1_prancheta_1.png" height="95" />
+                    <CajamarIcon style={{height:"95px",width:"250px"}} />
                   </Logo>
                   <Title><b>Gráficos de alunos </b>{school.situacao} </Title>
                   <Logo/>
