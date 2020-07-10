@@ -9,19 +9,46 @@ import {GeneroIcon} from "../src/icons/Icons";
 import { Box } from '@material-ui/core';
 
 
-
-const Header = styled.div`
-  font-size:28pt;
-  margin: 0.4em 0 0.8em 0  ;
-  padding: 0 0.8em ;
-  border-bottom: 2px solid #CCC;
-  color: #666;
+const Content = styled.div`
+  flex: 1 0 auto;
 `
-
+const FlexContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+const Header = styled.div`
+  color: #555555;
+  margin: 0 0 1.8em;
+  background-color: #f8fafb
+  padding: 0 1.2em 1em 1.6em;
+  border-top:12px solid #253e91;
+  box-shadow: 0px 3px 5px rgba(0,0,0,0.1);
+}
+`
+const Title = styled.div`
+  font-size: 26px;
+  flex-grow: 1; 
+  text-align: center;
+  line-height: 96px;
+`
+const Logo = styled.div`
+  height: 95px;
+  width: 280px;
+  text-align: center;
+`
+const Cajamar = styled.img`
+  height: 95px;
+  width: 250px;
+`
+const Educar = styled.img`
+  height:70px;
+`
 const Footer = styled.div`
-  padding: 0.8rem;
-  height: 150px;
-
+  font-size:28pt;
+  text-align:right;
+  padding: 0 0.8em ;
+  flex-shrink: 0; 
 `
 const responsive = {
   desktop: {
@@ -45,35 +72,40 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
 
     return (
 
-        <Carousel
-          responsive={responsive}
-          ssr
-          showDots={false}
-          autoPlay
-          autoPlaySpeed={5000}
-          slidesToSlide={1}
-          infinite
-          containerClass="carousel-container"
-          itemClass="chart-item"
-          deviceType={""}
-          removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
-        >
-          <Box>
-            <Header>
-            <b>Gráficos de alunos </b>{school.situacao}
-            </Header>
-           
-            <Chartpie {...school}></Chartpie>
+        
+          <>
+              <Header>
+                <FlexContainer>
+                  <Logo>
+                      <Cajamar src="https://cajamar.sp.gov.br/wp-content/uploads/2020/01/cropped-sem_titulo-1_prancheta_1.png" height="95" />
+                  </Logo>
+                  <Title><b>Gráficos de alunos </b>{school.situacao} </Title>
+                  <Logo/>
+                </FlexContainer>
+              </Header>
+              <Carousel
+                responsive={responsive}
+                ssr
+                showDots={false}
+                autoPlay
+                autoPlaySpeed={5000}
+                slidesToSlide={1}
+                infinite
+                containerClass="carousel-container"
+                itemClass="chart-item"
+                deviceType={""}
+                removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
+              >
+                <Content>
+                  <Chartpie {...school}></Chartpie>
+                </Content>  
+                <Content>Chart</Content>
+            </Carousel>
             <Footer>
-            
-              <img src="http://3.236.124.244/jab/static/images/logoME.png" alt="Logo +Educar"  width="120" />    
-              <img src="http://3.236.124.244/caj/static/images/logoCajamar.png" alt="Logo Cajamar" width="150" />
+              <Educar src="http://3.236.124.244/jab/static/images/logoME.png" /> 
             </Footer>
-            <GeneroIcon fill-opacity="0.1" style={{position:'absolute', top: 200, right:5, width:'450px'}} />
-          </Box>
-          <Box>Chart 2</Box>
-        </Carousel>
-
+            <GeneroIcon fillOpacity="0.1" style={{position:'absolute', bottom:10, left:10, width:'450px'}} />          
+          </>
 
     );
   }

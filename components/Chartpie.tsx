@@ -58,13 +58,27 @@ const Chartpie: FunctionComponent<School> =  ({
             enabled: false
         },
         tooltip: { enabled: false },
+        legend:{
+          itemStyle: {
+            color: '#666666',
+            fontSize: '18px'
+          },
+          itemMarginRight: 15,
+          itemMarginLeft: 10,
+          verticalAlign: "bottom",
+          symbolHeight: 16,
+          symbolWidth: 16,
+          symbolRadius: 8
+        },
         title: {
-          text: `Total de alunos: ${totalGeralFeminino+totalGeralMasculino}`,
-          style: {
-            fontSize: 30,
-            fontFamily: '\'Roboto\', sans-serif',
-        }
-      },
+            text: `Total: <strong>${totalGeralFeminino+totalGeralMasculino} alunos </strong>`,
+            verticalAlign: "bottom",
+            style: {
+              fontSize: 32,
+              color: '#666666',
+              fontFamily: '\'Roboto\', sans-serif',
+          }
+        },
         plotOptions: {
           series: {enableMouseTracking: false},
           pie: {
@@ -72,11 +86,12 @@ const Chartpie: FunctionComponent<School> =  ({
             enabled: true,
             depth: 35,
             dataLabels: {
-                style: {
-                    fontSize: 40,
-                    fontFamily: '\'Roboto\', sans-serif',
-                },
-              format: '{point.name}<br>{point.y:.f}',
+                  useHTML: true,
+                  enabled: true,
+                  connectorColor: '#999999',
+                  formatter: function () {
+                      return `<center style="font-size:28px; color:${this.point.color}">${this.point.y}<br>${this.point.name}</center>`;
+                  }
             },
           },
         },
@@ -93,7 +108,7 @@ const Chartpie: FunctionComponent<School> =  ({
           },
         ],
       };  
-      return <HighchartsReact  containerProps={{ style: { height: "550px" } }} highcharts={Highcharts} options={highchartsOptions} ref={chartRef} />
+      return <HighchartsReact  containerProps={{ style: { height: "600px" } }} highcharts={Highcharts} options={highchartsOptions} ref={chartRef} />
     }
 
     
