@@ -110,8 +110,9 @@ const Chartpie: FunctionComponent<School> =  ({
         ],
       };  
       return(<>
-        <GeneroIcon fillOpacity="0.1" style={{position:'absolute', bottom:10, left:10, width:'450px'}} />          
+        
         <HighchartsReact  containerProps={{ style: { height: "600px" } }} highcharts={Highcharts} options={highchartsOptions} ref={chartRef} />
+        <GeneroIcon fillOpacity="0.1" style={{position:'absolute', bottom:10, left:10, width:'450px'}} />          
         </>)
     }
 

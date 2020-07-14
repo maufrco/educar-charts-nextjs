@@ -41,7 +41,7 @@ const Chartstacked: FunctionComponent<School> =  ({
     const chartRef: any = useRef()
     const highchartsOptions ={
       chart: {
-        type: 'bar',
+        type: 'column'
     },
 
     title: {
@@ -52,7 +52,8 @@ const Chartstacked: FunctionComponent<School> =  ({
         categories: matriculasEscolaPorSexoDto.map((e) => (e.nomeEscola)),
         labels: {
             style: {
-                fontSize: '14px'
+                fontSize: '10px',
+                textTransform: 'capitalize'
             }
         }
     },
@@ -61,20 +62,15 @@ const Chartstacked: FunctionComponent<School> =  ({
 
         min: 0,
         title: {
-            text: 'Numero de alunos'
+            text: 'Numero de alunos',
+            skew3d: true
         },
         stackLabels: {
           enabled: true,
           style: {
-              fontWeight: 'bold',
-              color:  'gray'
+              color: '#555555'
           }
       }
-    },
-
-    tooltip: {
-        headerFormat: '<b>{point.key}</b><br>',
-        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
     },
     legend: {
       reversed: true
@@ -82,24 +78,31 @@ const Chartstacked: FunctionComponent<School> =  ({
   plotOptions: {
     series: {
         stacking: 'normal',
-        dataLabels: {
-          enabled: true
-      }
+         dataLabels: {
+                enabled: true
+            }
       }
   },
+  credits: {
+    enabled: false
+},
+tooltip: { enabled: false },
     series: [{
       name: 'Meninos',
       pointPlacement: -0.2,
       data: matriculasEscolaPorSexoDto.map((e) => (e.totalSexoMasculino)),
+      color: '#7095E1'
   }, {
       name: 'Meninas',
       pointPlacement: -0.2,
       data: matriculasEscolaPorSexoDto.map((e) => (e.totalSexoFeminino)),
+      color: '#FF8800'
   }]
       };  
       return(<>
-        <GeneroIcon fillOpacity="0.1" style={{position:'absolute', top:10, right:10, width:'450px'}} />   
+        x
         <HighchartsReact  containerProps={{ style: { height: "600px" } }} highcharts={Highcharts} options={highchartsOptions} ref={chartRef} />
+        <GeneroIcon fillOpacity="0.1" style={{position:'absolute', top:10, right:10, width:'450px'}} />          
         </>)
     }
 
