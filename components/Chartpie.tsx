@@ -2,6 +2,7 @@ import React, { useRef, FunctionComponent } from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import highcharts3d from 'highcharts/highcharts-3d';
+import { GeneroIcon } from '../src/icons/Icons';
 
 export interface School {
   anoLetivo: number
@@ -108,7 +109,10 @@ const Chartpie: FunctionComponent<School> =  ({
           },
         ],
       };  
-      return <HighchartsReact  containerProps={{ style: { height: "600px" } }} highcharts={Highcharts} options={highchartsOptions} ref={chartRef} />
+      return(<>
+        <GeneroIcon fillOpacity="0.1" style={{position:'absolute', bottom:10, left:10, width:'450px'}} />          
+        <HighchartsReact  containerProps={{ style: { height: "600px" } }} highcharts={Highcharts} options={highchartsOptions} ref={chartRef} />
+        </>)
     }
 
     

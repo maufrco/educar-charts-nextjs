@@ -7,6 +7,7 @@ import { getJson } from "../service/api";
 import styled from "styled-components";
 import {GeneroIcon, CajamarIcon} from "../src/icons/Icons";
 import { Box } from '@material-ui/core';
+import Chartstacked from "../components/ChartStacked";
 
 
 const Content = styled.div`
@@ -99,12 +100,14 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
                 <Content>
                   <Chartpie {...school}></Chartpie>
                 </Content>  
-                <Content>Chart</Content>
+                <Content>
+                <Chartstacked {...school}></Chartstacked>
+                </Content>
             </Carousel>
             <Footer>
               <Educar src="http://3.236.124.244/jab/static/images/logoME.png" /> 
             </Footer>
-            <GeneroIcon fillOpacity="0.1" style={{position:'absolute', bottom:10, left:10, width:'450px'}} />          
+          
           </>
 
     );
