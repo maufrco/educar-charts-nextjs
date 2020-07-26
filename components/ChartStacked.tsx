@@ -4,39 +4,13 @@ import HighchartsReact from 'highcharts-react-official'
 import highcharts3d from 'highcharts/highcharts-3d';
 import { GeneroIcon } from '../src/icons/Icons';
 
-export interface School {
-  anoLetivo: number
-  matriculasEscolaDto: []
-  matriculasEscolaPorEnsinoDto: []
+export interface SchoolPerGenre {
   matriculasEscolaPorSexoDto:[]
-  situacao: string
-  totalGeral: number
-  totalGeralFeminino: number
-  totalGeralMasculino: number
-  totalMatriculasEnsino:number
 };
-const Chartstacked: FunctionComponent<School> =  ({ 
-  anoLetivo,
-  matriculasEscolaDto,
-  matriculasEscolaPorEnsinoDto,
-  matriculasEscolaPorSexoDto,
-  situacao,
-  totalGeral,
-  totalGeralFeminino,
-  totalGeralMasculino,
-  totalMatriculasEnsino
+const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({ 
+  matriculasEscolaPorSexoDto
 }) => {
   highcharts3d(Highcharts);
-// console.log(  anoLetivo,
-//   matriculasEscolaDto,
-//   matriculasEscolaPorEnsinoDto,
-//   matriculasEscolaPorSexoDto,
-//   situacao,
-//   totalGeral,
-//   totalGeralFeminino,
-//   totalGeralMasculino,
-//   totalMatriculasEnsino)
-
 
     const chartRef: any = useRef()
     const highchartsOptions ={
@@ -52,7 +26,8 @@ const Chartstacked: FunctionComponent<School> =  ({
         categories: matriculasEscolaPorSexoDto.map((e) => (e.nomeEscola)),
         labels: {
             style: {
-                fontSize: '10px',
+                fontSize: '12px',
+                color: '#000000',
                 textTransform: 'capitalize'
             }
         }
@@ -100,7 +75,6 @@ tooltip: { enabled: false },
   }]
       };  
       return(<>
-        x
         <HighchartsReact  containerProps={{ style: { height: "600px" } }} highcharts={Highcharts} options={highchartsOptions} ref={chartRef} />
         <GeneroIcon fillOpacity="0.1" style={{position:'absolute', top:10, right:10, width:'450px'}} />          
         </>)

@@ -71,16 +71,29 @@ type Props = {
 };
 const Index: FunctionComponent<Props> = ({ school }) =>{
 
-    return (
+const separar = (itens:[], maximo: number):[] => {
+  return itens.reduce((acumulador, item, indice) => {
+    const grupo = Math.floor(indice / maximo);
+    acumulador[grupo] = [...(acumulador[grupo] || []), item];
+    return acumulador;
+  }, []);
+};
+  
+const gruposEscolas = separar(school.matriculasEscolaPorSexoDto,10)
+const chartPerSchool = gruposEscolas.map((schools:[], index:number )=>(
+  <Content key={index}>
+    <Chartstacked matriculasEscolaPorSexoDto={schools}></Chartstacked>
+</Content>
+))
 
-        
+    return (
           <>
               <Header>
                 <FlexContainer>
                   <Logo>
                     <CajamarIcon style={{height:"95px",width:"250px"}} />
                   </Logo>
-                  <Title><b>Gráficos de alunos </b>{school.situacao} </Title>
+                  <Title><b>GRÁFICO</b> - TOTAL DE MATRÍCULA POR SEXO</Title>
                   <Logo/>
                 </FlexContainer>
               </Header>
@@ -100,9 +113,11 @@ const Index: FunctionComponent<Props> = ({ school }) =>{
                 <Content>
                   <Chartpie {...school}></Chartpie>
                 </Content>  
-                <Content>
-                <Chartstacked {...school}></Chartstacked>
-                </Content>
+
+                {chartPerSchool}
+                
+
+
             </Carousel>
             <Footer>
               <Educar src="http://3.236.124.244/jab/static/images/logoME.png" /> 
