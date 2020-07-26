@@ -19,7 +19,7 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
     },
 
     title: {
-        text: 'Total de alunos por escola'
+        text: 'ALUNOS CURSANDO POR ESCOLA'
     },
 
     xAxis: {

@@ -102,7 +102,7 @@ const chartPerSchool = gruposEscolas.map((schools:[], index:number )=>(
                 ssr
                 showDots={false}
                 autoPlay
-                autoPlaySpeed={5000}
+                autoPlaySpeed={10000}
                 slidesToSlide={1}
                 infinite
                 containerClass="carousel-container"
