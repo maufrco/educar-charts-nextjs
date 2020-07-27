@@ -44,10 +44,11 @@ const Chartpie: FunctionComponent<School> =  ({
         },
         tooltip: { enabled: false },
         legend:{
-          verticalAlign: "bottom",
+          reversed: true,
           symbolHeight: 16,
           symbolWidth: 16,
           symbolRadius: 8,
+          verticalAlign:'top',
           itemStyle: {
             color: '#666666',
             fontSize: '18px'

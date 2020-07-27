@@ -44,9 +44,10 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
     yAxis: {
         min: 0,
         title: {
-            text: 'Numero de alunos',
-            skew3d: true
+            text: '',
         },
+        showEmpty: true,
+        visible:false,
         stackLabels: {
           enabled: true,
           style: {
@@ -61,6 +62,7 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
       symbolHeight: 16,
       symbolWidth: 16,
       symbolRadius: 8,
+      verticalAlign:'top',
       itemStyle:{
         color: '#666666',
         fontSize: '18px'
@@ -86,13 +88,13 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
 tooltip: { enabled: false },
 series: [{
       type: 'bar',
-      name: 'Meninos',
+      name: 'MENINOS',
       pointPlacement: -0.2,
       data: serieMasc,
       color: '#7095E1'
   }, {
       type: 'bar',
-      name: 'Meninas',
+      name: 'MENINAS',
       pointPlacement: -0.2,
       data: serieFem,
       color: '#FF8800'
