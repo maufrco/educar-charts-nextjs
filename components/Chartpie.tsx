@@ -1,5 +1,5 @@
 import React, { useRef, FunctionComponent } from 'react'
-import Highcharts from 'highcharts'
+import Highcharts, { Options } from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import highcharts3d from 'highcharts/highcharts-3d';
 import { GeneroIcon } from '../src/icons/Icons';
@@ -23,10 +23,10 @@ const Chartpie: FunctionComponent<School> =  ({
 }) => {
   highcharts3d(Highcharts);
     const chartRef: any = useRef()
-    const highchartsOptions ={
+    const highchartsOptions:Options ={
         chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
+          plotBackgroundColor: undefined,
+          plotBorderWidth: undefined,
           plotShadow: false,
           type: "pie",
           spacingTop: 0,
@@ -44,22 +44,20 @@ const Chartpie: FunctionComponent<School> =  ({
         },
         tooltip: { enabled: false },
         legend:{
-          itemStyle: {
-            color: '#666666',
-            fontSize: '18px'
-          },
-          itemMarginRight: 15,
-          itemMarginLeft: 10,
           verticalAlign: "bottom",
           symbolHeight: 16,
           symbolWidth: 16,
-          symbolRadius: 8
+          symbolRadius: 8,
+          itemStyle: {
+            color: '#666666',
+            fontSize: '18px'
+          }
         },
         title: {
             text: `Total: <strong>${totalGeralFeminino+totalGeralMasculino} alunos </strong>`,
             verticalAlign: "bottom",
             style: {
-              fontSize: 32,
+              fontSize: '32px',
               color: '#666666',
               fontFamily: '\'Roboto\', sans-serif',
           }
@@ -68,7 +66,6 @@ const Chartpie: FunctionComponent<School> =  ({
           series: {enableMouseTracking: false},
           pie: {
             showInLegend: true,
-            enabled: true,
             depth: 35,
             dataLabels: {
                   useHTML: true,
@@ -82,9 +79,10 @@ const Chartpie: FunctionComponent<School> =  ({
         },
         series: [
           {
+            type:"pie",
             name: "",
             colorByPoint: true,
-            borderColor: null,
+            borderColor: undefined,
             slicedOffset: 4,
             data: [
                 { name: 'MENINOS', y: totalGeralMasculino, color: '#7095E1'},

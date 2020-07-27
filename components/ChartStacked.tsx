@@ -1,5 +1,5 @@
 import React, { useRef, FunctionComponent } from 'react'
-import Highcharts from 'highcharts'
+import Highcharts, { Options } from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import highcharts3d from 'highcharts/highcharts-3d';
 import { GeneroIcon } from '../src/icons/Icons';
@@ -13,15 +13,20 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
 }) => {
     highcharts3d(Highcharts);
     
+
+    const serieMasc = matriculasEscolaPorSexoDto.map((e:{totalSexoMasculino:number}) => (e.totalSexoMasculino))
+    const serieFem = matriculasEscolaPorSexoDto.map((e:{totalSexoFeminino:number}) => (e.totalSexoFeminino))
+    
     const chartRef: any = useRef()
-    const highchartsOptions = {
+    const highchartsOptions:Options = {
       chart: {
-        type: 'column'
+        type: 'bar'
     },
     title: {
         text: titulo ? titulo : ('ALUNOS CURSANDO POR ESCOLA'),
+        verticalAlign:"bottom",
             style: {
-              fontSize: 32,
+              fontSize: '32px',
               color: '#666666',
               fontFamily: '\'Roboto\', sans-serif',
           }
@@ -30,7 +35,7 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
         categories: matriculasEscolaPorSexoDto.map((e:{nomeEscola:string}) => (e.nomeEscola)),
         labels: {
             style: {
-                fontSize: '12px',
+                fontSize: '16px',
                 color: '#000000',
                 textTransform: 'capitalize'
             }
@@ -45,18 +50,33 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
         stackLabels: {
           enabled: true,
           style: {
-              color: '#555555'
+              color: '#FFE100',
+              fontSize: '22px',
+              backgroundColor:'#000000'
           }
       }
     },
     legend: {
-      reversed: true
+      reversed: true,
+      symbolHeight: 16,
+      symbolWidth: 16,
+      symbolRadius: 8,
+      itemStyle:{
+        color: '#666666',
+        fontSize: '18px'
+      }
   },
   plotOptions: {
     series: {
-        stacking: 'normal',
+        stacking: 'percent',
          dataLabels: {
-                enabled: true
+                enabled: true,
+                nullFormat: false,
+
+                allowOverlap:false,
+                style:{
+                    fontSize: '24px'
+                }
             }
       }
   },
@@ -64,15 +84,17 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
      enabled: false
 },
 tooltip: { enabled: false },
-    series: [{
+series: [{
+      type: 'bar',
       name: 'Meninos',
       pointPlacement: -0.2,
-      data: matriculasEscolaPorSexoDto.map((e:{totalSexoMasculino:number}) => (e.totalSexoMasculino)),
+      data: serieMasc,
       color: '#7095E1'
   }, {
+      type: 'bar',
       name: 'Meninas',
       pointPlacement: -0.2,
-      data: matriculasEscolaPorSexoDto.map((e:{totalSexoFeminino:number}) => (e.totalSexoFeminino)),
+      data: serieFem,
       color: '#FF8800'
   }]
       };  
@@ -81,4 +103,4 @@ tooltip: { enabled: false },
         <GeneroIcon fillOpacity="0.1" style={{position:'absolute', top:10, right:10, width:'450px'}} />          
         </>)
     }
-    export default Chartstacked
+export default Chartstacked
