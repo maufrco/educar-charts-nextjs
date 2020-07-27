@@ -36,18 +36,19 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
         labels: {
             style: {
                 fontSize: '16px',
-                color: '#000000',
-                textTransform: 'capitalize'
+                color: '#555555',
+                fontWeight: 'bold',
             }
         }
     },
     yAxis: {
-        min: 0,
         title: {
             text: '',
         },
-        showEmpty: true,
-        visible:false,
+        labels:{
+            enabled:false
+         },
+        showEmpty: false,
         stackLabels: {
           enabled: true,
           style: {
