@@ -5,8 +5,7 @@ import Chartpie, { School } from "../components/Chartpie";
 import { GetStaticProps } from "next";
 import { getJson } from "../service/api";
 import styled from "styled-components";
-import {GeneroIcon, CajamarIcon} from "../src/icons/Icons";
-import { Box } from '@material-ui/core';
+import {CajamarIcon} from "../src/icons/Icons";
 import Chartstacked from "../components/ChartStacked";
 
 
@@ -38,10 +37,6 @@ const Logo = styled.div`
   width: 280px;
   text-align: center;
 `
-const Cajamar = styled.img`
-  height: 95px;
-  width: 250px;
-`
 const Educar = styled.img`
   height:70px;
 `
@@ -71,8 +66,11 @@ type Props = {
 };
 const Index: FunctionComponent<Props> = ({ school }) =>{
 
-const separar = (itens:[], maximo: number):[] => {
-  return itens.reduce((acumulador, item, indice) => {
+
+ const titulo = school.titulo_1 ? school.titulo_1 : 'GRÁFICO - TOTAL DE MATRÍCULA POR SEXO';
+
+const separar = (itens:any[], maximo: number):any[] => {
+  return itens.reduce((acumulador:any[], item, indice) => {
     const grupo = Math.floor(indice / maximo);
     acumulador[grupo] = [...(acumulador[grupo] || []), item];
     return acumulador;
@@ -82,8 +80,8 @@ const separar = (itens:[], maximo: number):[] => {
 const gruposEscolas = separar(school.matriculasEscolaPorSexoDto,10)
 const chartPerSchool = gruposEscolas.map((schools:[], index:number )=>(
   <Content key={index}>
-    <Chartstacked matriculasEscolaPorSexoDto={schools}></Chartstacked>
-</Content>
+    <Chartstacked matriculasEscolaPorSexoDto={schools} titulo={school.titulo_2}></Chartstacked>
+  </Content>
 ))
 
     return (
@@ -93,7 +91,7 @@ const chartPerSchool = gruposEscolas.map((schools:[], index:number )=>(
                   <Logo>
                     <CajamarIcon style={{height:"95px",width:"250px"}} />
                   </Logo>
-                  <Title><b>GRÁFICO</b> - TOTAL DE MATRÍCULA POR SEXO</Title>
+                    <Title>{titulo}</Title>
                   <Logo/>
                 </FlexContainer>
               </Header>
@@ -113,11 +111,7 @@ const chartPerSchool = gruposEscolas.map((schools:[], index:number )=>(
                 <Content>
                   <Chartpie {...school}></Chartpie>
                 </Content>  
-
                 {chartPerSchool}
-                
-
-
             </Carousel>
             <Footer>
               <Educar src="http://3.236.124.244/jab/static/images/logoME.png" /> 

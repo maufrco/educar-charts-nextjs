@@ -5,6 +5,8 @@ import highcharts3d from 'highcharts/highcharts-3d';
 import { GeneroIcon } from '../src/icons/Icons';
 
 export interface School {
+  titulo_1?: string;
+  titulo_2?: string;
   anoLetivo: number
   matriculasEscolaDto: []
   matriculasEscolaPorEnsinoDto: []
@@ -16,28 +18,10 @@ export interface School {
   totalMatriculasEnsino:number
 };
 const Chartpie: FunctionComponent<School> =  ({ 
-  anoLetivo,
-  matriculasEscolaDto,
-  matriculasEscolaPorEnsinoDto,
-  matriculasEscolaPorSexoDto,
-  situacao,
-  totalGeral,
   totalGeralFeminino,
-  totalGeralMasculino,
-  totalMatriculasEnsino
+  totalGeralMasculino
 }) => {
   highcharts3d(Highcharts);
-// console.log(  anoLetivo,
-//   matriculasEscolaDto,
-//   matriculasEscolaPorEnsinoDto,
-//   matriculasEscolaPorSexoDto,
-//   situacao,
-//   totalGeral,
-//   totalGeralFeminino,
-//   totalGeralMasculino,
-//   totalMatriculasEnsino)
-
-
     const chartRef: any = useRef()
     const highchartsOptions ={
         chart: {
@@ -90,7 +74,7 @@ const Chartpie: FunctionComponent<School> =  ({
                   useHTML: true,
                   enabled: true,
                   connectorColor: '#999999',
-                  formatter: function () {
+                  formatter: function (this: Highcharts.PointLabelObject):string {
                       return `<center style="font-size:28px; color:${this.point.color}">${this.point.y}<br>${this.point.name}</center>`;
                   }
             },
