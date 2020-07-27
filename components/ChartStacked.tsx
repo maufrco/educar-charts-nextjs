@@ -20,7 +20,8 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
     const chartRef: any = useRef()
     const highchartsOptions:Options = {
       chart: {
-        type: 'bar'
+        type: 'bar',
+        spacingRight:20
     },
     title: {
         text: titulo ? titulo : ('ALUNOS CURSANDO POR ESCOLA'),
@@ -52,7 +53,7 @@ const Chartstacked: FunctionComponent<SchoolPerGenre> =  ({
         stackLabels: {
           enabled: true,
           style: {
-              color: '#FFE100',
+              color: '#666666',
               fontSize: '22px',
               backgroundColor:'#000000'
           }
